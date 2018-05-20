@@ -2,12 +2,13 @@ package com.example.kevin.labo7pdm.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.kevin.labo7pdm.DBUtils.DBHelper;
 import com.example.kevin.labo7pdm.DBUtils.Registro;
@@ -42,6 +43,8 @@ public class AddFragment extends Fragment {
                 Registro r = new Registro(carnet, nota, materia, docente);
 
                 DBHelper.ourInstance.add(r);
+                DBHelper.cargarRegistros();
+                Log.d("Test", " "+DBHelper.ourInstance.getCurrentList().size());
             }
         });
 

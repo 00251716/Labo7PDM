@@ -19,6 +19,13 @@ public class Registro {
         mDocente = docente;
     }
 
+    public Registro(String carnet, String nota) {
+        mCarnet = carnet;
+        mNota = nota;
+        mMateria = " ";
+        mDocente = " ";
+    }
+
     public String getCarnet() {
         return mCarnet;
     }

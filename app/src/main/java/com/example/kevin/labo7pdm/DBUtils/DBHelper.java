@@ -1,18 +1,23 @@
 package com.example.kevin.labo7pdm.DBUtils;
 
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 import com.example.kevin.labo7pdm.MainActivity;
 
+import java.util.ArrayList;
+
 public class DBHelper extends SQLiteOpenHelper {
 
     private static Context context;
     public static final DBHelper ourInstance = new DBHelper(MainActivity.getContext());
-    SQLiteDatabase db;
+    private static SQLiteDatabase db;
+    private static ArrayList<Registro> mCurrentList; //Lista actual de registros de tuplas en la tabla
 
     //--------------- Constantes para la estructura de la tabla ----------------
     public static final String DB_NAME="bd_notas";
@@ -29,20 +34,56 @@ public class DBHelper extends SQLiteOpenHelper {
         return ourInstance;
     }
 
+    public ArrayList<Registro> getCurrentList() {
+        return  mCurrentList;
+    }
+
+    public static void cargarRegistros(){
+        mCurrentList = new ArrayList<Registro>();
+
+        try {
+
+            Cursor cursor = db.rawQuery("SELECT * FROM registro", null);
+
+            try {
+
+                if (cursor.moveToFirst()) {
+
+                    do {
+                        String carnet = cursor.getString(0);
+                        String nota = cursor.getString(1);
+                        String materia = cursor.getString(2);
+                        String docente = cursor.getString(3);
+                        Registro dummyRegistro = new Registro(carnet, nota, materia, docente);
+                        mCurrentList.add(dummyRegistro);
+                    } while (cursor.moveToNext());
+
+                }
+            } finally {
+                try {
+                    cursor.close();
+                } catch (Exception ignore) {
+
+                }
+            }
+
+        } catch (Exception ignore) {
+
+        }
+
+    }
+
     private DBHelper(Context context){
         super(context, DB_NAME, null, 1);
         this.context = context;
         db = this.getWritableDatabase(); //Crea o abre una base de datos que se usa para leer y escribir
+        cargarRegistros();
     }
 
     //Este método genera las tablas
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREAR_TABLA_REGISTRO);
-    }
-
-    public void test(){
-        Toast.makeText(context, "Lo logramos", Toast.LENGTH_SHORT).show();
     }
 
     //Este método verifica si existen versiones anteriores
@@ -66,6 +107,22 @@ public class DBHelper extends SQLiteOpenHelper {
         Toast.makeText(context, "Insertado con éxito", Toast.LENGTH_SHORT).show();
 
         return true;
+    }
+
+    public Registro buscarRegistro(String carnet){
+        Registro r;
+        String [] parametros = {carnet };
+        String [] campos = {CAMPO_CARNET, CAMPO_NOTA, CAMPO_MATERIA, CAMPO_CATEDRATICO};
+
+        try{
+            Cursor cursor = db.query(TABLA_REGISTROS, campos, CAMPO_CARNET+"=?", parametros, null, null, null );
+            cursor.moveToFirst();
+            r = new Registro(carnet, cursor.getString(1), cursor.getString(2), cursor.getString(3) );
+        } catch (Exception e) {
+            r = null;
+        }
+
+        return r;
     }
 
 }
