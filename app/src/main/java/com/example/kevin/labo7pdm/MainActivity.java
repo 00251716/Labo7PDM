@@ -3,6 +3,8 @@ package com.example.kevin.labo7pdm;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +14,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.example.kevin.labo7pdm.Fragments.AddFragment;
+import com.example.kevin.labo7pdm.Fragments.SearchFragment;
+import com.example.kevin.labo7pdm.Fragments.ShowFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -40,6 +46,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -81,17 +88,53 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_add) {
-            // Handle the camera action
+            item.setChecked(true);
+            setFragment(0);
         } else if (id == R.id.nav_show) {
-
+            item.setChecked(true);
+            setFragment(1);
         } else if (id == R.id.nav_update) {
-
+            item.setChecked(true);
+            setFragment(1);
         } else if (id == R.id.nav_search) {
-
+            item.setChecked(true);
+            setFragment(2);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    public void setFragment(int position) {
+        FragmentManager fragmentManager;
+        FragmentTransaction fragmentTransaction;
+
+        switch (position) {
+            case 0:
+                fragmentManager = getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                AddFragment addFragment = new AddFragment();
+                fragmentTransaction.replace(R.id.fragment, addFragment);
+                fragmentTransaction.commit();
+                break;
+
+            case 1:
+                fragmentManager = getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                ShowFragment showFragment = new ShowFragment();
+                fragmentTransaction.replace(R.id.fragment, showFragment);
+                fragmentTransaction.commit();
+                break;
+
+            case 3:
+                fragmentManager = getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                SearchFragment searchFragment = new SearchFragment();
+                fragmentTransaction.replace(R.id.fragment, searchFragment);
+                fragmentTransaction.commit();
+                break;
+        }
+    }
+
 }
