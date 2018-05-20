@@ -1,11 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="test"/>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/firstLayout"
+        android:orientation="vertical"
+        android:background="#fff"
+        android:gravity="center_horizontal">
 
-</LinearLayout>
+        <TextView
+            android:layout_marginTop="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_text_add"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_marginTop="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat = "@drawable/ic_perm_identity_"
+                android:layout_gravity="center"/>
+
+            <EditText
+                android:layout_margin="10dp"
+                android:id="@+id/editTextCarnet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="@string/carnet_hint" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat = "@drawable/ic_exposure_plus"
+                android:layout_gravity="center"/>
+
+            <EditText
+                android:layout_margin="10dp"
+                android:id="@+id/editTextNota"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="phone"
+                android:hint="@string/nota_hint" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat = "@drawable/ic_note_black"
+                android:layout_gravity="center"/>
+
+            <EditText
+                android:layout_margin="10dp"
+                android:id="@+id/editTextMateria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="phone"
+                android:hint="@string/materia_hint" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat = "@drawable/ic_person_black"
+                android:layout_gravity="center"/>
+
+            <EditText
+                android:layout_margin="10dp"
+                android:id="@+id/editTextCat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="phone"
+                android:hint="@string/cat_hint" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/addButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/done"/>
+
+    </LinearLayout>

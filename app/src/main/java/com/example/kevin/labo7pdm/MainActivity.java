@@ -1,5 +1,6 @@
 package com.example.kevin.labo7pdm;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -22,9 +23,12 @@ import com.example.kevin.labo7pdm.Fragments.ShowFragment;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static AppCompatActivity instance;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        instance = this;
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -137,4 +141,8 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    //útil
+    public static Context getContext() {
+        return instance.getApplicationContext();
+    }
 }
