@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import com.example.kevin.labo7pdm.Fragments.AddFragment;
 import com.example.kevin.labo7pdm.Fragments.SearchFragment;
 import com.example.kevin.labo7pdm.Fragments.ShowFragment;
+import com.example.kevin.labo7pdm.Fragments.UpdateFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -99,10 +100,10 @@ public class MainActivity extends AppCompatActivity
             setFragment(1);
         } else if (id == R.id.nav_update) {
             item.setChecked(true);
-            setFragment(1);
+            setFragment(2);
         } else if (id == R.id.nav_search) {
             item.setChecked(true);
-            setFragment(2);
+            setFragment(3);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -110,6 +111,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    //Método para cambiar entre fragmentos de acuerdo a la opción seleccionada en el navigation drawer
     public void setFragment(int position) {
         FragmentManager fragmentManager;
         FragmentTransaction fragmentTransaction;
@@ -131,10 +133,10 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction.commit();
                 break;
 
-            case 3:
+            case 2:
                 fragmentManager = getSupportFragmentManager();
                 fragmentTransaction = fragmentManager.beginTransaction();
-                SearchFragment searchFragment = new SearchFragment();
+                UpdateFragment searchFragment = new UpdateFragment();
                 fragmentTransaction.replace(R.id.fragment, searchFragment);
                 fragmentTransaction.commit();
                 break;

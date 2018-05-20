@@ -109,6 +109,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return true;
     }
 
+    //Método para buscar un registro
     public Registro buscarRegistro(String carnet){
         Registro r;
         String [] parametros = {carnet };
@@ -123,6 +124,22 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         return r;
+    }
+
+    //Método para editar un registro
+    public boolean editarRegistro(String carnet, String nota){
+        String [] parametros = {carnet};
+        ContentValues values = new ContentValues();
+        values.put(CAMPO_NOTA, nota);
+        int rowsAffected = db.update(TABLA_REGISTROS, values, CAMPO_CARNET+"=?", parametros);
+
+        if(rowsAffected == 0){
+            Toast.makeText(context, "No se encontraron registros. Pruebe con otro carnet.", Toast.LENGTH_SHORT).show();
+        } else if(rowsAffected > 0){
+            Toast.makeText(context, "Se actualizaron con éxito "+rowsAffected+" registros.", Toast.LENGTH_SHORT).show();
+        }
+
+        return true;
     }
 
 }

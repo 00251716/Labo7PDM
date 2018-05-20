@@ -10,10 +10,13 @@
     <string name="nav_show">Show</string>
     <string name="nav_update">Actualizar</string>
     <string name="nav_search">Buscar</string>
-    <string name="carnet_hint">Carnet</string>
-    <string name="nota_hint">Nota</string>
-    <string name="materia_hint">Materia</string>
-    <string name="cat_hint">Catedrático</string>
+    <string name="carnet_hint">Carnet:</string>
+    <string name="nota_hint">Nota:</string>
+    <string name="nueva_nota_hint">Nueva nota:</string>
+    <string name="materia_hint">Materia:</string>
+    <string name="cat_hint">Catedrático:</string>
     <string name="done">Añadir</string>
     <string name="main_text_add">Ingresa los datos:</string>
+    <string name="main_text_update">Actualiza la nota de un usuario:</string>
+    <string name="update">Actualizar</string>
 </resources>
