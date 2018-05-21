@@ -73,4 +73,23 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         }
     }
+
+    //Este método sirve para filtrar resultados del buscador
+    public void filter(String text) {
+        mData.clear();
+        if(text.isEmpty()){
+            mData.addAll(itemsCopy);
+        } else {
+            text = text.toLowerCase();
+            for(Registro r : itemsCopy) {
+                if(r.getCarnet().contains(text)) mData.add(r);
+            }
+        }
+        notifyDataSetChanged();
+    }
+
+    public ArrayList<Registro> getOriginal(){
+        return itemsCopy;
+    }
+
 }

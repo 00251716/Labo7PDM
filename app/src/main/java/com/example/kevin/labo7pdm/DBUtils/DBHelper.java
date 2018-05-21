@@ -77,6 +77,14 @@ public class DBHelper extends SQLiteOpenHelper {
         super(context, DB_NAME, null, 1);
         this.context = context;
         db = this.getWritableDatabase(); //Crea o abre una base de datos que se usa para leer y escribir
+
+        //----------------------- Dummy data ----------------------------------------------------------
+        add(new Registro("00251717", "8.6", "Análisis numérico", "Sosa"));
+        add(new Registro("00023416", "6", "PDM", "Néstor Aldana"));
+        add(new Registro("00451717", "9", "Probabilidad", "Navarro"));
+        add(new Registro("00123416", "7", "Redes", "Varela"));
+        add(new  Registro("00012318", "10", "Análisis de sistemas", "Silviax"));
+        //----------------------- Dummy data ----------------------------------------------------------
         cargarRegistros();
     }
 
@@ -103,8 +111,6 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(CAMPO_CATEDRATICO, r.getDocente());
 
         db.insert(TABLA_REGISTROS, null, values);
-
-        Toast.makeText(context, "Insertado con éxito", Toast.LENGTH_SHORT).show();
 
         return true;
     }

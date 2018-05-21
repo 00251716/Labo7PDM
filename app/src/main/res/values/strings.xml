@@ -2,12 +2,12 @@
     <string name="app_name">Labo7PDM</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Labo 7 PDM: SQLite</string>
+    <string name="nav_header_subtitle">00251716</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="nav_add">Ingresar</string>
-    <string name="nav_show">Show</string>
+    <string name="nav_show">Mostrar</string>
     <string name="nav_update">Actualizar</string>
     <string name="nav_search">Buscar</string>
     <string name="carnet_hint">Carnet:</string>
@@ -17,6 +17,6 @@
     <string name="cat_hint">Catedrático:</string>
     <string name="done">Añadir</string>
     <string name="main_text_add">Ingresa los datos:</string>
-    <string name="main_text_update">Actualiza la nota de un usuario:</string>
+    <string name="main_text_update">Actualiza una nota:</string>
     <string name="update">Actualizar</string>
 </resources>
